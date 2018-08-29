@@ -49,9 +49,3 @@ Viv supports all of the cross-platform supported keys listed here: https://robot
 ` toggle
 
 ```
-
-#
-
-<p align="center">
-  <a href="http://paco.sh"><img src="https://raw.githubusercontent.com/pacocoursey/pacocoursey.github.io/master/footer.png" height="300"></a>
-</p>
