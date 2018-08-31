@@ -1,14 +1,30 @@
 {
-  "name": "viv",
-  "version": "1.0.0",
+  "name": "Viv",
+  "version": "1.0.1",
   "description": "A simple cross-platform keyboard mapper.",
   "repository": "https://github.com/pacocoursey/viv",
   "author": "Paco Coursey",
   "license": "MIT",
   "main": "./main.js",
   "scripts": {
-    "start": "/Applications/Electron.app/Contents/MacOS/Electron .",
-    "dist": "build"
+    "start": "electron .",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint-fix": "eslint --ignore-path .gitignore --fix .",
+    "dist": "build",
+    "rebuild": "npm rebuild --runtime=electron --target=2.0.2 --disturl=https://atom.io/download/atom-shell --abi=64"
+  },
+  "dependencies": {
+    "electron-settings": "^3.1.4",
+    "robotjs": "^0.4.7"
+  },
+  "devDependencies": {
+    "electron": "^2.0.8",
+    "electron-builder": "^19.56.2",
+    "electron-rebuild": "^1.7.3",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "npm": "^5.8.0"
   },
   "build": {
     "appId": "com.electron.viv",
@@ -16,14 +32,5 @@
     "mac": {
       "category": "public.app-category.productivity"
     }
-  },
-  "devDependencies": {
-    "electron-builder": "^19.56.2",
-    "electron-rebuild": "^1.7.3",
-    "npm": "^5.8.0"
-  },
-  "dependencies": {
-    "electron-settings": "^3.1.4",
-    "robotjs": "^0.4.7"
   }
 }
