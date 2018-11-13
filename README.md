@@ -9,8 +9,8 @@ Want to try it out? Run the following from the command line.
 ```
 $ git clone https://github.com/pacocoursey/viv.git
 $ cd viv
-$ npm install
-$ npm start
+$ yarn install
+$ yarn start
 ```
 
 Keep in mind this project is still under development.
