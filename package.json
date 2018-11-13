@@ -1,36 +1,69 @@
 {
-  "name": "Viv",
+  "name": "viv",
+  "productName": "Viv",
   "version": "1.0.1",
-  "description": "A simple cross-platform keyboard mapper.",
-  "repository": "https://github.com/pacocoursey/viv",
-  "author": "Paco Coursey",
-  "license": "MIT",
-  "main": "./main.js",
+  "description": "a simple cross-platform keyboard mapper.",
+  "main": "./src/main/index.js",
   "scripts": {
+    "postinstall": "electron-rebuild",
     "start": "electron .",
     "lint": "eslint --ignore-path .gitignore .",
-    "lint-fix": "eslint --ignore-path .gitignore --fix .",
-    "dist": "build",
-    "rebuild": "npm rebuild --runtime=electron --target=2.0.2 --disturl=https://atom.io/download/atom-shell --abi=64"
+    "build:mac": "electron-builder -m",
+    "build:win": "electron-builder -w",
+    "build:linux": "electron-builder -l"
   },
+  "repository": "https://github.com/pacocoursey/viv",
+  "author": "Paco Coursey <p@paco.im> (paco.im)",
+  "license": "MIT",
   "dependencies": {
-    "electron-settings": "^3.1.4",
-    "robotjs": "^0.4.7"
+    "electron-is-dev": "^1.0.1",
+    "electron-next": "^3.1.5",
+    "electron-settings": "^3.2.0",
+    "robotjs": "^0.5.1"
   },
   "devDependencies": {
-    "electron": "^2.0.8",
-    "electron-builder": "^19.56.2",
-    "electron-rebuild": "^1.7.3",
-    "eslint": "^5.4.0",
+    "electron": "^3.0.8",
+    "electron-builder": "^20.28.4",
+    "electron-rebuild": "^1.8.2",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "npm": "^5.8.0"
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "next": "^7.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
+  },
+  "bundle": {
+    "name": "Viv"
   },
   "build": {
-    "appId": "com.electron.viv",
-    "productName": "viv",
+    "appId": "com.pacocoursey.viv",
+    "files": [
+      "**/*",
+      "!renderer",
+      "renderer/out"
+    ],
     "mac": {
       "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "portable"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 175,
+          "y": 225
+        },
+        {
+          "x": 365,
+          "y": 225,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   }
 }

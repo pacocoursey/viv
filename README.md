@@ -1,5 +1,7 @@
 # Viv
 
+**This is the React development branch. For a stable version, see the master branch.**
+
 ## Installation
 
 Want to try it out? Run the following from the command line.
