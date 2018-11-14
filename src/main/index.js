@@ -12,7 +12,7 @@ app.on('ready', async () => {
     height: 600,
   });
 
-  const devPath = 'http://localhost:8000/start';
+  const devPath = 'http://localhost:8000/';
 
   const prodPath = format({
     pathname: path.join(__dirname, '/renderer/out/start/index.html'),

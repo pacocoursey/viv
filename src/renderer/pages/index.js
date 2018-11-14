@@ -1,7 +1,14 @@
 import React from 'react';
+import Layout from '../components/Layout';
+import Input from '../components/ui/Input';
+import KbdInput from '../components/ui/KbdInput';
 
 const Index = () => (
-  <h1>INDEX</h1>
+  <Layout>
+    <h1>Index</h1>
+
+    <KbdInput />
+  </Layout>
 );
 
 export default Index;

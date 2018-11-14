@@ -19,7 +19,8 @@
     "electron-is-dev": "^1.0.1",
     "electron-next": "^3.1.5",
     "electron-settings": "^3.2.0",
-    "robotjs": "^0.5.1"
+    "robotjs": "^0.5.1",
+    "styled-components": "^4.1.1"
   },
   "devDependencies": {
     "electron": "^3.0.8",
