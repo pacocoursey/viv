@@ -1,9 +1,0 @@
-# this is a comment
-
-1 rightclick
-2 move 0 40
-3 click
-
-# specify a custom toggle key
-
-` toggle

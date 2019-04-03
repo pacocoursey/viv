@@ -1,36 +1,58 @@
 {
-  "name": "Viv",
+  "name": "Key",
+  "productName": "Key",
   "version": "1.0.1",
-  "description": "A simple cross-platform keyboard mapper.",
-  "repository": "https://github.com/pacocoursey/viv",
+  "description": "simple cross-platform keyboard mapper.",
+  "repository": "https://github.com/pacocoursey/key",
   "author": "Paco Coursey",
   "license": "MIT",
-  "main": "./main.js",
+  "main": "./src/main.js",
   "scripts": {
+    "postintall": "electron-rebuild",
     "start": "electron .",
     "lint": "eslint --ignore-path .gitignore .",
-    "lint-fix": "eslint --ignore-path .gitignore --fix .",
-    "dist": "build",
-    "rebuild": "npm rebuild --runtime=electron --target=2.0.2 --disturl=https://atom.io/download/atom-shell --abi=64"
+    "build": "electron-packager . --out=dist --asar --overwrite --all",
+    "rebuild": "electron-rebuild"
   },
   "dependencies": {
     "electron-settings": "^3.1.4",
-    "robotjs": "^0.4.7"
+    "electron-unhandled": "^2.1.0",
+    "robotjs": "^0.5.1"
   },
   "devDependencies": {
-    "electron": "^2.0.8",
+    "electron": "^4.1.3",
     "electron-builder": "^19.56.2",
+    "electron-packager": "^13.1.1",
     "electron-rebuild": "^1.7.3",
+    "electron-reloader": "^0.2.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "npm": "^5.8.0"
+    "eslint-plugin-import": "^2.14.0"
   },
   "build": {
-    "appId": "com.electron.viv",
-    "productName": "viv",
+    "appId": "com.pacocoursey.key",
+    "files": [
+      "**/*"
+    ],
     "mac": {
       "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "portable"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 175,
+          "y": 225
+        },
+        {
+          "x": 365,
+          "y": 225,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   }
 }
