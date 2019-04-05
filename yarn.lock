@@ -901,6 +901,11 @@ ejs@^2.5.7:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
   integrity sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
 
+electron-better-ipc@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/electron-better-ipc/-/electron-better-ipc-0.1.2.tgz#8ff9d216d0a70924bca466699bcb50c5d42911e5"
+  integrity sha512-tn00v9+/kcln2nV7GCffXzaoVUMoH7HHQj0Sya43U7xt2bqgjT1DF5T3+nkG2CChkuCE/TgVTQyFOv2jm0Vogg==
+
 electron-builder-lib@19.56.2:
   version "19.56.2"
   resolved "https://registry.yarnpkg.com/electron-builder-lib/-/electron-builder-lib-19.56.2.tgz#9e4ef3a1a5fa21d3fd490561261ae639bb263da3"
@@ -1819,6 +1824,11 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+
+htm@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-2.1.1.tgz#5a53e5f2845c3181b1672f95c9bffaf3d621bb0e"
+  integrity sha512-jgvB9nvlOE5xpI1W+juW8DPCe+Pn7mRDNaE4EOQNFqROm0O3l5deOvefK8C8hUaL1OHIX45mDEBSj7BMt+22VQ==
 
 http-signature@~1.2.0:
   version "1.2.0"
@@ -3085,6 +3095,11 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
+
+preact@^8.4.2:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.4.2.tgz#1263b974a17d1ea80b66590e41ef786ced5d6a23"
+  integrity sha512-TsINETWiisfB6RTk0wh3/mvxbGRvx+ljeBccZ4Z6MPFKgu/KFGyf2Bmw3Z/jlXhL5JlNKY6QAbA9PVyzIy9//A==
 
 prebuild-install@^2.1.1:
   version "2.5.3"

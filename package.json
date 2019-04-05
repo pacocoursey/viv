@@ -15,8 +15,11 @@
     "rebuild": "electron-rebuild"
   },
   "dependencies": {
+    "electron-better-ipc": "^0.1.2",
     "electron-settings": "^3.1.4",
     "electron-unhandled": "^2.1.0",
+    "htm": "^2.1.1",
+    "preact": "^8.4.2",
     "robotjs": "^0.5.1"
   },
   "devDependencies": {

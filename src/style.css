@@ -1,0 +1,73 @@
+:root {
+  --bg: #fff;
+  --color: #000;
+
+  --gray-100: #fafafa;
+  --gray-200: #eaeaea;
+  --gray-300: #999;
+  --gray-400: #888;
+  --gray-500: #666;
+  --gray-600: #444;
+  --gray-700: #333;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body.dark {
+  --bg: #000;
+  --color: #fff;
+
+  --gray-100: #333;
+  --gray-200: #444;
+  --gray-300: #666;
+  --gray-400: #888;
+  --gray-500: #999;
+  --gray-600: #eaeaea;
+  --gray-700: #fafafa;
+}
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  background: var(--bg);
+  color: var(--color);
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: 14px;
+}
+
+.bar {
+  width: 100vw;
+  height: 40px;
+  color: var(--gray-700);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  -webkit-app-region: drag;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
