@@ -20,7 +20,8 @@
     "electron-unhandled": "^2.1.0",
     "htm": "^2.1.1",
     "preact": "^8.4.2",
-    "robotjs": "^0.5.1"
+    "robotjs": "^0.5.1",
+    "styled-jsx": "^3.2.1"
   },
   "devDependencies": {
     "electron": "^4.1.3",

@@ -1,35 +1,23 @@
-const htm = require('htm');
-const { Component, render, h } = require('preact');
-
-const html = htm.bind(h);
+const { Component, render, html } = require('htm/preact');
+const Checkbox = require('./components/Checkbox');
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      todos: [],
-    };
+  handleClick() {
+    console.log('wtf');
   }
 
-  addTodo() {
-    const { todos } = this.state;
-    this.setState({ todos: todos.concat(`Item ${todos.length}`) });
-  }
-
-  render(props, { todos = [] }) {
+  render() {
     return html`
       <div class="app">
-        <ul>
-          ${todos.map(todo => html`
-            <li>${todo}</li>
-          `)}
-        </ul>
-        <button onClick=${() => this.addTodo()}>Add Todo</button>
+        <h1>SDLFKJSDF</h1>
+        <${Checkbox.default}
+          name="Display"
+          onChange=${this.handleClick}
+        />
       </div>
     `;
   }
-}
+};
 
 const container = document.querySelector('.app');
 render(html`<${App} />`, container);
