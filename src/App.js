@@ -1,5 +1,12 @@
 const { Component, render, html } = require('htm/preact');
-const Checkbox = require('./components/Checkbox');
+const Checkbox = require('./components/Checkbox').default;
+const Dropdown = require('./components/Dropdown').default;
+
+const fonts = [
+  'San Francisco',
+  'Hack',
+  'Arial',
+];
 
 class App extends Component {
   handleClick() {
@@ -8,11 +15,13 @@ class App extends Component {
 
   render() {
     return html`
-      <div class="app">
-        <h1>SDLFKJSDF</h1>
-        <${Checkbox.default}
+      <div>
+        <${Checkbox}
           name="Display"
           onChange=${this.handleClick}
+        />
+        <${Dropdown}
+          options=${fonts}
         />
       </div>
     `;

@@ -150,3 +150,67 @@ body {
   background: var(--color);
   transition: border var(--time), background var(--time);
 }
+
+/* Dropdown */
+
+.dropdown {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--gray-200);
+  width: 100%;
+  max-width: 130px;
+  height: 25px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--white);
+  font-weight: 300;
+}
+
+select:disabled:hover {
+  cursor: not-allowed !important;
+}
+
+.dropdown:hover,
+.dropdown > select:hover {
+  cursor: pointer;
+}
+
+.dropdown:hover::after,
+.dropdown:focus-within::after {
+  border-top-color: var(--color);
+  transition: border var(--time);
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 10px;
+  height: 0;
+  width: 0;
+  border-bottom: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--gray-200);
+  transition: border var(--time);
+}
+
+.dropdown > select {
+  color: var(--fg);
+  font-size: 10px;
+  font-weight: 300;
+  padding: 5px 20px 5px 8px;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+
+.dropdown > select:focus {
+  outline: none;
+}
