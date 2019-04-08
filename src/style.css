@@ -56,9 +56,9 @@ body {
   width: 100vw;
   height: 40px;
   color: var(--gray-700);
+  background: var(--bg);
 
-  position: absolute;
-  top: 0;
+  flex-shrink: 0;
 
   display: flex;
   justify-content: center;
@@ -75,8 +75,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  padding-bottom: 20px;
 }
 
 .app {
@@ -86,35 +84,58 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-content: flex-end;
-
-  padding: 40px 20px;
 }
 
 .list {
-  width: 100%;
-  padding-right: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-end;
   overflow: scroll;
+
+  padding: 0 20px;
 }
 
-.row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+table {
   user-select: none;
+  border-collapse: collapse;
+}
 
-  padding: 10px 0;
+table thead th {
+  background: var(--bg);
+  z-index: 3;
+}
+
+table th {
+  position: sticky;
+  top: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.8rem;
+  height: 40px;
+  color: var(--gray-400);
+  text-align: left;
+}
+
+table td {
+  height: 50px;
+}
+
+table tr:not(:last-child) td {
   border-bottom: 1px solid var(--gray-100);
 }
 
-.row:last-child {
-  border: none;
-}
-
 footer {
-  position: absolute;
-  bottom: 20px;
+  flex-shrink: 0;
+  width: 100vw;
+  height: 40px;
+
+  background: var(--gray-100);
+
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .add {
@@ -140,8 +161,6 @@ footer {
   height: 25px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .checkbox > input {
@@ -218,12 +237,13 @@ footer {
   margin: 0;
   border: 1px solid var(--gray-200);
   width: 100%;
-  max-width: 130px;
+  /* max-width: 130px; */
   height: 25px;
   border-radius: 3px;
   overflow: hidden;
   background: var(--white);
   font-weight: 300;
+  transition: border var(--time);
 }
 
 select:disabled:hover {
@@ -233,11 +253,7 @@ select:disabled:hover {
 .dropdown:hover,
 .dropdown > select:hover {
   cursor: pointer;
-}
-
-.dropdown:hover::after,
-.dropdown:focus-within::after {
-  border-top-color: var(--color);
+  border-color: var(--gray-300);
   transition: border var(--time);
 }
 
@@ -310,7 +326,7 @@ select:disabled:hover {
 }
 
 .input-text > input:focus {
-  border: 1px solid var(--color);
+  border: 1px solid var(--color) !important;
   transition: border var(--time);
 }
 
@@ -323,4 +339,13 @@ select:disabled:hover {
   position: absolute;
   top: 7px;
   right: 6px;
+}
+
+.input-text > input:disabled {
+  cursor: not-allowed;
+}
+
+.input-text input:not(:disabled):hover {
+  border-color: var(--gray-300);
+  transition: border var(--time);
 }

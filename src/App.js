@@ -1,5 +1,5 @@
 const { Component, render, html } = require('htm/preact');
-const Row = require('./components/Row').default;
+const Table = require('./components/Table').default;
 const Footer = require('./components/Footer').default;
 
 let i = 0;
@@ -10,7 +10,11 @@ class App extends Component {
     super();
 
     this.state = {
-      list: {},
+      list: {
+        x0: {
+          name: 'Test',
+        },
+      },
     };
   }
 
@@ -41,18 +45,15 @@ class App extends Component {
     return html`
       <div class="app">
         <div class="list">
-          ${Object.keys(list).map(key => html`
-            <${Row}
-              name=${list[key].name}
-              key=${key}
-              name=${key}
-              onremove=${() => { this.removeRow(key); }}
-            />
-          `)}
+          <${Table}
+            items=${list}
+            removeRow=${(key) => { this.removeRow(key); }}
+          />
         </div>
 
         <${Footer} onclick=${() => { this.addRow(); }} />
       </div>
+
     `;
   }
 }
