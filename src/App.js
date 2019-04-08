@@ -1,32 +1,12 @@
-const { Component, render, html } = require('htm/preact');
-const Checkbox = require('./components/Checkbox').default;
-const Dropdown = require('./components/Dropdown').default;
+const { render, html } = require('htm/preact');
+const Row = require('./components/Row').default;
 
-const fonts = [
-  'San Francisco',
-  'Hack',
-  'Arial',
-];
+const App = () => html`
+  <div class="app">
+    <${Row} name="Some Name" />
+    <${Row} name="Other Longer Name" />
+  </div>
+`;
 
-class App extends Component {
-  handleClick() {
-    console.log('wtf');
-  }
-
-  render() {
-    return html`
-      <div>
-        <${Checkbox}
-          name="Display"
-          onChange=${this.handleClick}
-        />
-        <${Dropdown}
-          options=${fonts}
-        />
-      </div>
-    `;
-  }
-};
-
-const container = document.querySelector('.app');
+const container = document.querySelector('.container');
 render(html`<${App} />`, container);
