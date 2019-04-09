@@ -13,6 +13,13 @@ class App extends Component {
       list: {
         x0: {
           name: 'Test',
+          action: 'down',
+          value: 30,
+          shortcut: {
+            metaKey: true,
+            shiftKey: true,
+            character: 'x',
+          },
         },
       },
     };
@@ -39,6 +46,18 @@ class App extends Component {
     });
   }
 
+  updateRow(key, value) {
+    const { list } = this.state;
+
+    list[key] = value;
+
+    this.setState({
+      list,
+    });
+
+    console.log(this.state);
+  }
+
   render() {
     const { list } = this.state;
 
@@ -48,6 +67,7 @@ class App extends Component {
           <${Table}
             items=${list}
             removeRow=${(key) => { this.removeRow(key); }}
+            updateRow=${(key, value) => { this.updateRow(key, value); }}
           />
         </div>
 

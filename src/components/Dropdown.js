@@ -1,7 +1,7 @@
 const { html } = require('htm/preact');
 
 const Dropdown = ({
-  name, options, onchange, disabled,
+  name, options, onchange, disabled, value,
 }) => html`
   <div>
     ${name ? html`<div class="label">${name}</div>` : ''}
@@ -11,7 +11,12 @@ const Dropdown = ({
         disabled="${disabled === true}"
       >
         ${options.map(option => html`
-          <option value="${option}">${option}</option>
+          <option
+            value="${option}"
+            selected="${value === option}"
+          >
+            ${option}
+          </option>
         `)}
       </select>
     </div>

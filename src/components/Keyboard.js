@@ -4,7 +4,7 @@ class Keyboard extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = this.props.value || {
       metaKey: false,
       altKey: false,
       ctrlKey: false,
@@ -37,13 +37,7 @@ class Keyboard extends Component {
   }
 
   isValid() {
-    const {
-      metaKey, altKey, ctrlKey, shiftKey, character,
-    } = this.state;
-
-    if (![metaKey, altKey, ctrlKey, shiftKey].includes(true)) {
-      return false;
-    }
+    const { character } = this.state;
 
     if (character.length === 0) {
       return false;
@@ -101,6 +95,10 @@ class Keyboard extends Component {
       shiftKey: false,
       character: '',
     });
+
+    if (this.props.onchange) {
+      this.props.onchange(this.state);
+    }
   }
 
   handleBlur() {

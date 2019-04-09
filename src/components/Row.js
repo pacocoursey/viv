@@ -14,56 +14,103 @@ const options = [
 ];
 
 class Row extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      choice: options[0],
+      active: this.props.active || true,
+      name: this.props.name || '',
+      action: this.props.action || options[0],
+      value: this.props.value || null,
+      shortcut: this.props.shortcut || {},
     };
   }
 
   handleChange(e) {
     if (e.target.value) {
       this.setState({
-        choice: e.target.value,
+        action: e.target.value,
+      }, () => {
+        this.props.onupdate(this.state);
       });
     }
   }
 
+  toggleActive() {
+    this.setState(prevState => ({
+      active: !prevState.active,
+    }), () => {
+      this.props.onupdate(this.state);
+    });
+  }
+
+  handleValue(e) {
+    const { value } = e.target;
+
+    this.setState({
+      value,
+    }, () => {
+      this.props.onupdate(this.state);
+    });
+  }
+
+  handleShortcut(shortcut) {
+    this.setState({
+      shortcut,
+    }, () => {
+      this.props.onupdate(this.state);
+    });
+  }
+
   render() {
-    const { name, key, onremove } = this.props;
-    const { choice } = this.state;
+    const {
+      key, onremove,
+    } = this.props;
+
+    const {
+      active, name, action, value, shortcut,
+    } = this.state;
 
     return html`
       <tr class="row">
         <td>
           <${Checkbox}
-            onchange=${() => { console.log('eee'); }}
+            onchange=${() => { this.toggleActive(); }}
             id=${key}
-            checked
+            checked="${active === true}"
           />
         </td>
 
-        <td>${name}</td>
+        <td>
+          <div>
+            ${name}
+          </div>
+        </td>
 
         <td>
           <${Dropdown}
             options=${options}
+            value=${action}
             onchange=${e => this.handleChange(e)}
           />
         </td>
 
         <td>
           ${
-            choice === 'click'
-            || choice === 'right click'
+            action === 'click' || action === 'right click'
               ? html`<${Input} hide />`
-              : html`<${Input} />`
+              : html`<${Input}
+                value=${value}
+                onchange=${(v) => { this.handleValue(v); }}
+              />`
           }
         </td>
 
         <td>
-          <${Keyboard} />
+          <${Keyboard}
+            value=${shortcut}
+            onchange=${(o) => { this.handleShortcut(o); }}
+          />
         </td>
 
         <td>

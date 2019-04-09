@@ -385,6 +385,7 @@ select:disabled:hover {
   color: var(--color);
   border: 1px solid var(--gray-200);
   border-radius: 3px;
+  text-transform: uppercase;
   text-align: center;
   height: 25px;
   width: 100px;
