@@ -23,7 +23,6 @@ const Table = ({ items, removeRow, updateRow }) => html`
           <${Row}
             name=${name || key}
             key=${key}
-            name=${name || key}
             action=${action}
             value=${value}
             shortcut=${shortcut}

@@ -99,7 +99,6 @@ body {
 
 table {
   user-select: none;
-  /* table-layout: fixed; */
   border-collapse: separate;
   border-spacing: 0px;
 }
@@ -151,24 +150,42 @@ footer {
   padding: 0 20px;
 }
 
-.add, button {
+button {
   display: flex;
   justify-content: center;
   align-items: center;
 
+  background: transparent;
   outline: none;
   cursor: pointer;
   padding: 5px;
   border: 1px solid var(--gray-200);
   border-radius: 2px;
+  transition: border var(--time);
+}
+
+button:hover {
+  border-color: var(--gray-300);
+  transition: border var(--time);
 }
 
 .remove {
-  width: 13px;
   cursor: pointer;
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid transparent;
+  transition: border var(--time);
+}
+
+.remove:hover {
+  border-color: var(--gray-300);
+  transition: border var(--time);
+}
+
+.icon {
+  stroke: var(--color);
 }
 
 /* Checkbox */
@@ -379,6 +396,11 @@ select:disabled:hover {
   display: flex;
 }
 
+.shortcut-input input:hover {
+  border-color: var(--gray-300);
+  transition: border var(--time);
+}
+
 .shortcut-input input {
   font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
   background: none;
@@ -394,10 +416,40 @@ select:disabled:hover {
   transition: border var(--time);
 }
 
-.shortcut-input input:focus,
-.shortcut-input input:focus button {
+.shortcut-input input:focus {
   border-color: var(--gray-300);
   transition: border var(--time);
+}
+
+.shortcut-input.shake {
+  animation: shake 500ms ease-in-out;
+}
+
+.shortcut-input.shake input {
+  border-color: red;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(2px, 0, 0);
+  }
 }
 
 .shortcut-input button {

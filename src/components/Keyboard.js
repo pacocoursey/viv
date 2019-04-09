@@ -1,4 +1,5 @@
 const { Component, html } = require('htm/preact');
+const X = require('./icons/X').default;
 
 class Keyboard extends Component {
   constructor(props) {
@@ -21,11 +22,20 @@ class Keyboard extends Component {
 
     e.preventDefault();
 
-    const { metaKey, altKey, ctrlKey, shiftKey } = e;
+    const {
+      metaKey, altKey, ctrlKey, shiftKey,
+    } = e;
 
-    const INVALID_KEYS = [17, 16, 91, 8, 18];
+    const INVALID_KEYS = [
+      'Meta',
+      'Alt',
+      'Control',
+      'Tab',
+      'Shift',
+      'Backspace',
+    ];
 
-    const character = INVALID_KEYS.includes(e.which) ? '' : String.fromCharCode(e.which);
+    const character = INVALID_KEYS.includes(e.key) ? '' : e.key;
 
     this.setState({
       metaKey,
@@ -67,7 +77,11 @@ class Keyboard extends Component {
         onchange(this.state);
       }
     } else {
-      console.log('Yeah thats not valid.');
+      this.wrapperRef.classList.add('shake');
+
+      setTimeout(() => {
+        this.wrapperRef.classList.remove('shake');
+      }, 500);
     }
   }
 
@@ -81,7 +95,7 @@ class Keyboard extends Component {
       altKey && '⌥',
       ctrlKey && '⌃',
       shiftKey && '⇧',
-      character,
+      character === 'Enter' ? '↵' : character,
     ].filter(Boolean);
 
     return keys.join('');
@@ -109,7 +123,9 @@ class Keyboard extends Component {
 
   render() {
     return html`
-      <div className="shortcut-input">
+      <div
+        className="shortcut-input"
+        ref=${r => this.wrapperRef = r}>
         <div>
           <input
             onkeyup=${(e) => { this.store(e); }}
@@ -122,7 +138,7 @@ class Keyboard extends Component {
           type="button"
           onclick=${() => { this.clear(); }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <${X} />
         </button>
       </div>
 

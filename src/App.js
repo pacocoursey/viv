@@ -55,7 +55,7 @@ class App extends Component {
       list,
     });
 
-    console.log(this.state);
+    console.log(this.state.list);
   }
 
   render() {
