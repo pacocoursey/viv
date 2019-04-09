@@ -131,18 +131,18 @@ footer {
   width: 100vw;
   height: 40px;
 
-  background: var(--gray-100);
-
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
 
-.add {
+.add, button {
   display: flex;
   justify-content: center;
   align-items: center;
 
+  outline: none;
   cursor: pointer;
   padding: 5px;
   border: 1px solid var(--gray-200);
@@ -348,4 +348,29 @@ select:disabled:hover {
 .input-text input:not(:disabled):hover {
   border-color: var(--gray-300);
   transition: border var(--time);
+}
+
+/* Shortcut Input */
+
+.shortcut-input {
+  display: flex;
+}
+
+.shortcut-input input {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
+  background: none;
+  color: var(--color);
+  border: 1px solid var(--gray-200);
+  border-radius: 3px;
+  text-align: center;
+  height: 25px;
+  width: 75px;
+  outline: none;
+  padding: 5px 6px 5px 5px;
+  transition: border var(--time);
+}
+
+.shortcut-input button {
+  position: relative;
+  left: -3px;
 }

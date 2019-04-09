@@ -15,9 +15,9 @@ const Table = ({ items, removeRow }) => html`
     <tbody>
       ${Object.keys(items).map(key => html`
         <${Row}
-          name=${items[key].name}
+          name=${items[key].name || key}
           key=${key}
-          name=${key}
+          name=${items[key].name || key}
           onremove=${() => { removeRow(key); }}
         />
       `)}
