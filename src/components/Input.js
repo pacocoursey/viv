@@ -1,7 +1,7 @@
 const { html } = require('htm/preact');
 
 const Input = ({ value, hide }) => html`
-  <div class="input-text">
+  <div class="input-text" disabled="${hide === true}">
     <input
       type="text"
       maxlength="4"

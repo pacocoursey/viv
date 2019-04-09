@@ -99,7 +99,9 @@ body {
 
 table {
   user-select: none;
-  border-collapse: collapse;
+  /* table-layout: fixed; */
+  border-collapse: separate;
+  border-spacing: 0px;
 }
 
 table thead th {
@@ -116,6 +118,18 @@ table th {
   height: 40px;
   color: var(--gray-400);
   text-align: left;
+}
+
+table th:first-child {
+  width: 30px;
+}
+
+table th:last-child {
+  width: 30px;
+}
+
+table th {
+  width: 20%;
 }
 
 table td {
@@ -150,7 +164,11 @@ footer {
 }
 
 .remove {
+  width: 13px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Checkbox */
@@ -159,6 +177,7 @@ footer {
   background: transparent;
   position: relative;
   height: 25px;
+  width: 15px;
   display: flex;
   flex-direction: row;
 }
@@ -237,7 +256,7 @@ footer {
   margin: 0;
   border: 1px solid var(--gray-200);
   width: 100%;
-  /* max-width: 130px; */
+  width: 75px;
   height: 25px;
   border-radius: 3px;
   overflow: hidden;
@@ -296,6 +315,10 @@ select:disabled:hover {
   background: var(--white);
   position: relative;
   width: 60px;
+}
+
+.input-text[disabled=true] {
+  display: none;
 }
 
 .input-text.small {
@@ -364,13 +387,21 @@ select:disabled:hover {
   border-radius: 3px;
   text-align: center;
   height: 25px;
-  width: 75px;
+  width: 100px;
   outline: none;
-  padding: 5px 6px 5px 5px;
+  padding: 5px 15px 5px 5px;
+  transition: border var(--time);
+}
+
+.shortcut-input input:focus,
+.shortcut-input input:focus button {
+  border-color: var(--gray-300);
   transition: border var(--time);
 }
 
 .shortcut-input button {
   position: relative;
-  left: -3px;
+  background: none;
+  border: none;
+  left: -25px;
 }

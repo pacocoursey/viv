@@ -5,11 +5,12 @@ const Table = ({ items, removeRow }) => html`
   <table>
     <thead>
       <tr>
-        <th>Active</th>
+        <th></th>
         <th>Name</th>
         <th>Action</th>
         <th>Value</th>
-        <th>Remove</th>
+        <th>Shortcut</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
