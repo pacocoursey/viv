@@ -17,6 +17,26 @@
   box-sizing: border-box
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-100);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+  display: none;
+}
+
+
 html,
 body {
   padding: 0;
@@ -93,6 +113,7 @@ body {
   justify-content: space-between;
   align-content: flex-end;
   overflow: scroll;
+  margin-right: 20px;
 
   padding: 0 20px;
 }
