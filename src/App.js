@@ -1,6 +1,7 @@
 const { Component, render, html } = require('htm/preact');
 const Table = require('./components/Table').default;
 const Footer = require('./components/Footer').default;
+const Row = require('./components/Row').default;
 
 let i = 0;
 const uniq = () => `u${i++}`;
@@ -10,10 +11,12 @@ class App extends Component {
     super();
 
     this.state = {
+      allOn: false,
       list: {
         x0: {
           name: 'Test',
           action: 'down',
+          active: true,
           value: 30,
           shortcut: {
             metaKey: true,
@@ -38,37 +41,89 @@ class App extends Component {
 
   removeRow(key) {
     const { list } = this.state;
-
     delete list[key];
-
-    this.setState({
-      list,
-    });
+    this.setState({ list });
   }
 
-  updateRow(key, value) {
+  handleChange(key, attr, val) {
     const { list } = this.state;
+    list[key][attr] = val;
+    this.setState({ list });
+  }
 
-    list[key] = value;
+  toggleAll() {
+    const { allOn, list } = this.state;
+
+    if (allOn) {
+      Object.keys(list).forEach((key) => {
+        list[key].active = false;
+      });
+    } else {
+      Object.keys(list).forEach((key) => {
+        list[key].active = true;
+      });
+    }
 
     this.setState({
+      allOn: !allOn,
       list,
     });
-
-    console.log(this.state.list);
   }
 
   render() {
-    const { list } = this.state;
+    const { list, allOn } = this.state;
 
     return html`
       <div class="app">
         <div class="list">
           <${Table}
+            checked=${allOn}
             items=${list}
-            removeRow=${(key) => { this.removeRow(key); }}
-            updateRow=${(key, value) => { this.updateRow(key, value); }}
-          />
+            toggle=${() => { this.toggleAll(); }}
+          >
+            ${Object.keys(list).map(key => html`
+                <${Row}
+                  key=${key}
+
+                  data=${list[key]}
+
+                  handleActive=${() => {
+                    this.handleChange(
+                      key,
+                      'active',
+                      !this.state.list[key].active,
+                    );
+                  }}
+
+                  handleAction=${(e) => {
+                    this.handleChange(
+                      key,
+                      'action',
+                      e.target.value,
+                    );
+                  }}
+
+                  handleValue=${(e) => {
+                    this.handleChange(
+                      key,
+                      'value',
+                      e.target.value,
+                    );
+                  }}
+
+                  handleShortcut=${(o) => {
+                    this.handleChange(
+                      key,
+                      'shortcut',
+                      o,
+                    );
+                  }}
+
+                  onupdate=${(v) => { this.updateRow(key, v); }}
+                  onremove=${() => { this.removeRow(key); }}
+                />
+              `)}
+          <//>
         </div>
 
         <${Footer} onclick=${() => { this.addRow(); }} />

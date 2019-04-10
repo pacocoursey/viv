@@ -1,11 +1,16 @@
 const { html } = require('htm/preact');
-const Row = require('./Row').default;
+const Checkbox = require('./Checkbox').default;
 
-const Table = ({ items, removeRow, updateRow }) => html`
+const Table = ({ toggle, checked, children }) => html`
   <table>
     <thead>
       <tr>
-        <th></th>
+        <th>
+          <${Checkbox}
+            onchange=${() => { toggle(); }}
+            checked="${checked === true}"
+          />
+        </th>
         <th>Name</th>
         <th>Action</th>
         <th>Value</th>
@@ -14,23 +19,7 @@ const Table = ({ items, removeRow, updateRow }) => html`
       </tr>
     </thead>
     <tbody>
-      ${Object.keys(items).map((key) => {
-        const {
-          name, action, value, shortcut,
-        } = items[key];
-
-        return html`
-          <${Row}
-            name=${name || key}
-            key=${key}
-            action=${action}
-            value=${value}
-            shortcut=${shortcut}
-            onupdate=${(v) => { updateRow(key, v); }}
-            onremove=${() => { removeRow(key); }}
-          />
-        `;
-      })}
+      ${children}
     </tbody>
   </table>
 `;
