@@ -95,7 +95,7 @@ class Keyboard extends Component {
       altKey && '⌥',
       ctrlKey && '⌃',
       shiftKey && '⇧',
-      character === 'Enter' ? '↵' : character,
+      character === 'Enter' ? '↵' : character === ' ' ? '␣' : character,
     ].filter(Boolean);
 
     return keys.join('');
@@ -125,15 +125,14 @@ class Keyboard extends Component {
     return html`
       <div
         className="shortcut-input"
-        ref=${r => this.wrapperRef = r}>
-        <div>
-          <input
-            onkeyup=${(e) => { this.store(e); }}
-            onkeydown=${(e) => { this.handleKeyDown(e); }}
-            onblur=${() => { this.handleBlur(); }}
-            value=${this.renderKeys()}
-          />
-        </div>
+        ref=${(r) => { this.wrapperRef = r; }}
+      >
+        <input
+          onkeyup=${(e) => { this.store(e); }}
+          onkeydown=${(e) => { this.handleKeyDown(e); }}
+          onblur=${() => { this.handleBlur(); }}
+          value=${this.renderKeys()}
+        />
         <button
           type="button"
           onclick=${() => { this.clear(); }}

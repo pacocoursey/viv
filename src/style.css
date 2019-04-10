@@ -10,7 +10,7 @@
   --gray-600: #444;
   --gray-700: #333;
 
-  --time: 300ms ease-in-out;
+  --time: 150ms ease-in-out;
 }
 
 * {
@@ -417,9 +417,14 @@ select:disabled:hover {
   display: flex;
 }
 
-.shortcut-input input:hover {
+.shortcut-input:hover input {
   border-color: var(--gray-300);
   transition: border var(--time);
+}
+
+.shortcut-input:hover button::before {
+  background: var(--gray-300);
+  transition: background var(--time);
 }
 
 .shortcut-input input {
@@ -442,12 +447,22 @@ select:disabled:hover {
   transition: border var(--time);
 }
 
+.shortcut-input input:focus + button::before {
+  background: var(--color);
+  transition: background var(--time);
+}
+
 .shortcut-input.shake {
   animation: shake 500ms ease-in-out;
 }
 
 .shortcut-input.shake input {
   border-color: red;
+}
+
+.shortcut-input.shake button::before {
+  background: red !important;
+  transition: background var(--time);
 }
 
 @keyframes shake {
@@ -477,5 +492,16 @@ select:disabled:hover {
   position: relative;
   background: none;
   border: none;
-  left: -25px;
+  left: -24px;
+}
+
+.shortcut-input button::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  left: 0;
+  top: 0;
+  background-color: var(--gray-200);
+  transition: background var(--time);
 }
