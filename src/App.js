@@ -14,6 +14,7 @@ class App extends Component {
       allOn: false,
       list: {
         x0: {
+          edit: false,
           name: 'Test',
           action: 'down',
           active: true,
@@ -42,6 +43,12 @@ class App extends Component {
   removeRow(key) {
     const { list } = this.state;
     delete list[key];
+    this.setState({ list });
+  }
+
+  editRow(key) {
+    const { list } = this.state;
+    list[key].edit = !list[key].edit;
     this.setState({ list });
   }
 
@@ -87,6 +94,14 @@ class App extends Component {
 
                   data=${list[key]}
 
+                  handleName=${(e) => {
+                    this.handleChange(
+                      key,
+                      'name',
+                      e.target.value,
+                    );
+                  }}
+
                   handleActive=${() => {
                     this.handleChange(
                       key,
@@ -121,6 +136,7 @@ class App extends Component {
 
                   onupdate=${(v) => { this.updateRow(key, v); }}
                   onremove=${() => { this.removeRow(key); }}
+                  onedit=${() => { this.editRow(key); }}
                 />
               `)}
           <//>

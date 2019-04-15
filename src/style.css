@@ -156,6 +156,12 @@ table td {
   height: 50px;
 }
 
+table td:last-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 table tr:not(:last-child) td {
   border-bottom: 1px solid var(--gray-100);
 }
@@ -190,7 +196,7 @@ button:hover {
   transition: border var(--time);
 }
 
-.remove {
+.button {
   cursor: pointer;
   border-radius: 2px;
   display: flex;
@@ -200,7 +206,7 @@ button:hover {
   transition: border var(--time);
 }
 
-.remove:hover {
+.button:hover {
   border-color: var(--gray-300);
   transition: border var(--time);
 }
@@ -384,6 +390,7 @@ select:disabled:hover {
   outline: none;
   padding: 5px 13px 5px 5px;
   transition: border var(--time);
+  font-variant-numeric: tabular-nums;
 }
 
 .input-text > input:focus {
@@ -413,6 +420,10 @@ select:disabled:hover {
 
 /* Shortcut Input */
 
+.shortcut {
+  text-transform: uppercase;
+}
+
 .shortcut-input {
   display: flex;
 }
@@ -438,7 +449,7 @@ select:disabled:hover {
   height: 25px;
   width: 100px;
   outline: none;
-  padding: 5px 15px 5px 5px;
+  padding: 5px 28px 5px 5px;
   transition: border var(--time);
 }
 

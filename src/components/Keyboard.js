@@ -1,6 +1,22 @@
 const { Component, html } = require('htm/preact');
 const X = require('./icons/X').default;
 
+const keyboardToString = (o) => {
+  const {
+    metaKey, altKey, ctrlKey, shiftKey, character,
+  } = o;
+
+  const keys = [
+    metaKey && '⌘',
+    altKey && '⌥',
+    ctrlKey && '⌃',
+    shiftKey && '⇧',
+    character === 'Enter' ? '↵' : character === ' ' ? '␣' : character,
+  ].filter(Boolean);
+
+  return keys.join('');
+};
+
 class Keyboard extends Component {
   constructor(props) {
     super(props);
@@ -145,4 +161,7 @@ class Keyboard extends Component {
   }
 }
 
-module.exports.default = Keyboard;
+module.exports = {
+  default: Keyboard,
+  keyboardToString,
+};

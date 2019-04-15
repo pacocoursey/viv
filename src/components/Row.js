@@ -4,6 +4,10 @@ const Dropdown = require('./Dropdown').default;
 const Input = require('./Input').default;
 const Keyboard = require('./Keyboard').default;
 const X = require('./icons/X').default;
+const Edit = require('./icons/Edit').default;
+const Check = require('./icons/Check').default;
+
+const { keyboardToString } = require('./Keyboard');
 
 const options = [
   'click',
@@ -17,7 +21,9 @@ const options = [
 const Row = (props) => {
   const {
     data,
+    onedit,
     onremove,
+    handleName,
     handleActive,
     handleAction,
     handleValue,
@@ -25,6 +31,7 @@ const Row = (props) => {
   } = props;
 
   const {
+    edit = false,
     active = false,
     name = '',
     action = options[0],
@@ -37,49 +44,80 @@ const Row = (props) => {
       <td>
         <${Checkbox}
           onchange=${handleActive}
-          checked="${active === true}"
+          checked="${active}"
         />
       </td>
 
-      <td>
+      <td class="name">
         <div>
-          ${name}
+          ${edit ? html`
+            <${Input}
+              value=${name}
+              onchange=${handleName}
+            />
+          ` : name}
         </div>
       </td>
 
       <td>
-        <${Dropdown}
-          options=${options}
-          value=${action}
-          onchange=${handleAction}
-        />
+        ${edit ? html`
+          <${Dropdown}
+            options=${options}
+            value=${action}
+            onchange=${handleAction}
+          />
+        ` : action}
       </td>
 
       <td>
-        ${
+        ${edit ?
           action === 'click' || action === 'right click'
             ? html`<${Input} hide />`
             : html`<${Input}
               value=${value}
+              placeholder="PX"
+              max="4"
               onchange=${handleValue}
             />`
-        }
+        : action === 'click' || action === 'right click' ? '' : html`${value} PX`}
       </td>
 
       <td>
-        <${Keyboard}
-          value=${shortcut}
-          onchange=${handleShortcut}
-        />
+        ${edit ? html`
+          <${Keyboard}
+            value=${shortcut}
+            onchange=${handleShortcut}
+          />
+        ` : html`<div class="shortcut">${keyboardToString(shortcut)}</div>`}
       </td>
 
       <td>
         <button
-          class="remove"
+          class="button"
+          title="Remove"
           onclick=${onremove}
         >
           <${X} />
         </button>
+
+        ${edit ? html`
+        <button
+          class="button"
+          title="Save"
+          onclick=${onedit}
+        >
+          <${Check} />
+        </button>
+        ` : html`
+        <button
+          class="button"
+          title="Edit"
+          onclick=${onedit}
+        >
+          <${Edit} />
+        </button>
+        `}
+
       </td>
     </tr>
   `;
