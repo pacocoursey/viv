@@ -1,2 +1,2 @@
-require('./theme');
+// require('./theme');
 require('./App');

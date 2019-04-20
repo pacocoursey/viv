@@ -1,7 +1,10 @@
 const { Component, render, html } = require('htm/preact');
+const Store = require('electron-store');
 const Table = require('./components/Table').default;
 const Footer = require('./components/Footer').default;
 const Row = require('./components/Row').default;
+
+const store = new Store();
 
 let i = 0;
 const uniq = () => `u${i++}`;
@@ -12,21 +15,12 @@ class App extends Component {
 
     this.state = {
       allOn: false,
-      list: {
-        x0: {
-          edit: false,
-          name: 'Test',
-          action: 'down',
-          active: true,
-          value: 30,
-          shortcut: {
-            metaKey: true,
-            shiftKey: true,
-            character: 'x',
-          },
-        },
-      },
+      list: store.get('list'),
     };
+  }
+
+  componentDidUpdate() {
+    store.set('list', this.state.list);
   }
 
   addRow() {

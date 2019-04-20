@@ -55,7 +55,7 @@ const Row = (props) => {
               value=${name}
               onchange=${handleName}
             />
-          ` : name}
+          ` : html`<div class="text">${name}</div>`}
         </div>
       </td>
 
@@ -66,7 +66,7 @@ const Row = (props) => {
             value=${action}
             onchange=${handleAction}
           />
-        ` : action}
+        ` : html`<div class="text">${action}</div>`}
       </td>
 
       <td>
@@ -79,7 +79,7 @@ const Row = (props) => {
               max="4"
               onchange=${handleValue}
             />`
-        : action === 'click' || action === 'right click' ? '' : html`${value} PX`}
+        : action === 'click' || action === 'right click' ? '' : html`<div class="text">${value} PX</div>`}
       </td>
 
       <td>
@@ -88,7 +88,7 @@ const Row = (props) => {
             value=${shortcut}
             onchange=${handleShortcut}
           />
-        ` : html`<div class="shortcut">${keyboardToString(shortcut)}</div>`}
+        ` : html`<div class="shortcut text">${keyboardToString(shortcut)}</div>`}
       </td>
 
       <td>
