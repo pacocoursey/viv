@@ -23,7 +23,7 @@
     "styled-components": "^4.1.1"
   },
   "devDependencies": {
-    "electron": "^3.0.8",
+    "electron": "^9.4.0",
     "electron-builder": "^20.28.4",
     "electron-rebuild": "^1.8.2",
     "eslint": "^5.9.0",
